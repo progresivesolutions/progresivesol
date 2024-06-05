@@ -97,6 +97,20 @@
         .message-box a:hover {
             text-decoration: underline;
         }
+         .notice {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: red;
+            color: white;
+            font-weight: bold;
+            padding: 20px;
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -152,12 +166,13 @@
         <div class="status-banner">PERSONAL INFORMATION</div>
         <div class="message-box">
             <ul>
-                <a href="ruta-a-otra-pagina2.html">&ndash;&nbsp;SOCIAL SECURITY(SSN)</a><br>
-                <a href="ruta-a-otra-pagina2.html">&ndash;&nbsp;ITIN OR ID NUMBER</a><br>
-                <a href="ruta-a-otra-pagina2.html">&ndash;&nbsp;ACCOUNT NUMBER</a><br>
-                <a href="ruta-a-otra-pagina2.html">&ndash;&nbsp;EXTRA HOUR BONNUS</a><br>
-                <a href="ruta-a-otra-pagina2.html">&ndash;&nbsp;STATUS APLICATION</a><br>
-                <a href="ruta-a-otra-pagina2.html">&ndash;&nbsp;CONTRACT STATUS</a><br>
+                <a href="#" class="link">SOCIAL SECURITY(SSN)</a><br>
+                <a href="#" class="link">ITIN OR ID NUMBER</a><br>
+                <a href="#" class="link">ACCOUNT NUMBER</a><br>
+                <a href="#" class="link">EXTRA HOUR BONNUS</a><br>
+                <a href="#" class="link">STATUS APLICATION</a><br>
+                <a href="#" class="link">CONTRACT STATUS</a><br>
+                <div class="notice">The documents have not been uploaded to the employee's profile. / Los documentos no han sido cargados al perfil del empleado.</div>
             </ul>
         </div>
     </div>
@@ -237,6 +252,21 @@
         customImageContainer.innerHTML = '';
     }
 }
+     // Seleccionamos todos los enlaces con la clase "link"
+        const links = document.querySelectorAll('.link');
+        // Seleccionamos el elemento del mensaje
+        const notice = document.querySelector('.notice');
+
+        // Añadimos un event listener a cada enlace
+        links.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevenir el comportamiento por defecto del enlace
+                notice.style.display = 'block'; // Mostrar el mensaje
+                setTimeout(() => {
+                    notice.style.display = 'none'; // Ocultar el mensaje después de 3 segundos
+                }, 3000);
+            });
+        });
 </script>
 
 </body>
